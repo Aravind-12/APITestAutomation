@@ -35,9 +35,10 @@ public class RCBPlayerValidation extends Utils {
         ObjectMapper obj = new ObjectMapper();
         ObjectMapper objectmaper = getObjectMapper();
         JsonNode response=obj.readTree(String.valueOf(objectmaper));
-       assertEquals(response.get("country").textValue(),ResponseMessageValidation.COUNTRY_NAME1);
-        assertEquals(response.get("country").textValue(),ResponseMessageValidation.COUNTRY);
-        assertEquals(response.get("country").textValue(),ResponseMessageValidation.COUNTRY_NAME2);
+       assertEquals(response.get("Glenn Maxwell").get("country").textValue(),ResponseMessageValidation.COUNTRY_NAME1);
+        assertEquals(response.get("Josh Hazlewood").get("country").textValue(),ResponseMessageValidation.COUNTRY_NAME1);
+        assertEquals(response.get("Wanindu Hasaranga").get("country").textValue(),ResponseMessageValidation.COUNTRY_NAME2);
+        assertEquals(response.get("Faf Du Plessis").get("country").textValue(),ResponseMessageValidation.COUNTRY);
     }
 
     @Then("I am notified team has at least one wicket keeper")
@@ -45,11 +46,15 @@ public class RCBPlayerValidation extends Utils {
         ObjectMapper obj = new ObjectMapper();
         ObjectMapper objectmaper = getObjectMapper();
         JsonNode response=obj.readTree(String.valueOf(objectmaper));
-        assertEquals("Wicket-keeper",response.get("role").textValue());
+        assertEquals(ResponseMessageValidation.KEEPER,response.get("role").get("Wicket-keeper").textValue());
     }
 
     @Then("I am notified team has more than four foreign player")
-    public void iAmNotifiedTeamHasMoreThanFourForeignPlayer() {
+    public void iAmNotifiedTeamHasMoreThanFourForeignPlayer() throws JsonProcessingException {
+        ObjectMapper obj = new ObjectMapper();
+        ObjectMapper objectmaper = getObjectMapper();
+        JsonNode response=obj.readTree(String.valueOf(objectmaper));
+        assertNotEquals(response.get("country").textValue(),ResponseMessageValidation.COUNTRY_NAME3);
     }
 
     @Then("I am notified team has more than one wicket keeper")
