@@ -1,54 +1,41 @@
 package com.api.pojo;
 
-import org.apache.juneau.annotation.Beanc;
-
-import java.util.List;
 
 public class Player {
+    private String name;
+    private String country;
+    private String role;
+    private double priceInCrores;
 
-    List<String> name;
-    List<String> country;
-    List<String> role;
-    List<Integer> priceInCrores;
-
-    @Beanc(properties = "name,country,role,priceInCrores")
-    public Player(List<String> name, List<String> country, List<String> role, List<Integer> priceInCrores) {
-        this.name = name;
-        this.country = country;
-        this.role = role;
-        this.priceInCrores = priceInCrores;
-    }
-
-    public List<String> getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(List<String> name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public List<String> getCountry() {
+    public String getCountry() {
         return country;
     }
 
-    public void setCountry(List<String> country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 
-    public List<String> getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(List<String> role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public List<Integer> getPriceInCrores() {
+    public double getPriceInCrores(double v) {
         return priceInCrores;
     }
 
-    public void setPriceInCrores(List<Integer> priceInCrores) {
+    public void setPriceInCrores(double priceInCrores) {
         this.priceInCrores = priceInCrores;
     }
-
 }
