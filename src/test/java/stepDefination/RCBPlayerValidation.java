@@ -7,27 +7,21 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import static org.junit.Assert.*;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import io.restassured.specification.ResponseSpecification;
 import resources.Utils;
 
 public class RCBPlayerValidation extends Utils {
 
-    RequestSpecification request;
-    ResponseSpecification respSpec;
-    Response response;
-
-
     @Given("I am RCB team management")
     public void iAmRcbTeamManagement() {
-      //
+      //No code required as its parsing only response
+      // No authentication or request spec is required
 
     }
 
     @When("I submit the team for upcoming match")
     public void iSubmitTheTeamForUpcomingMatch(){
 
+        //no API requesting trigger required as there is no http method, resource and request body
     }
 
     @Then("I verify team should have only four foreign player")
@@ -58,6 +52,12 @@ public class RCBPlayerValidation extends Utils {
     }
 
     @Then("I am notified team has more than one wicket keeper")
-    public void iAmNotifiedTeamHasMoreThanOneWicketKeeper() {
+    public void iAmNotifiedTeamHasMoreThanOneWicketKeeper() throws JsonProcessingException {
+
+        // dummy validation as this is not required.
+        ObjectMapper obj = new ObjectMapper();
+        ObjectMapper objectmaper = getObjectMapper();
+        JsonNode response=obj.readTree(String.valueOf(objectmaper));
+        assertEquals(response.get("Wicket-keeper").textValue(),ResponseMessageValidation.KEEPER);
     }
 }
