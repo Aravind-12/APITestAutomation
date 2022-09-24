@@ -7,6 +7,8 @@ public class ResponseMessageValidation {
     public static final String COUNTRY_NAME2 = "Srilanka";
     public static final String COUNTRY_NAME3 = "XYZ";
     public static final String KEEPER = "Wicket-keeper";
+    public static final String MORE_KEEPER = "Wicket-keeper";
+
 
 
 }
